@@ -1,0 +1,59 @@
+---
+- name: Example playbook with issues
+  hosts: all
+  gather_facts: no
+  
+  vars:
+    # Hardcoded password
+    db_password: "admin123"
+    api_key: "sk-1234567890abcdef"
+  
+  tasks:
+    # Using shell instead of command module
+    - name: Run shell command
+      shell: echo "Hello World"
+    
+    # Command injection vulnerability
+    - name: Unsafe command with user input
+      shell: "cat {{ user_file }}"
+      
+    # Missing no_log for sensitive data
+    - name: Display password
+      debug:
+        msg: "Password is {{ db_password }}"
+    
+    # Using command module without proper error handling
+    - name: Command without error handling
+      command: /bin/false
+      
+    # Deprecated sudo instead of become
+    - name: Use sudo
+      command: whoami
+      sudo: yes
+      
+    # Missing become but needs privileges
+    - name: Install package without become
+      apt:
+        name: nginx
+        state: present
+    
+    # Using bare variables (deprecated)
+    - name: Bare variable usage
+      debug:
+        msg: "{{ ansible_os_family }}"
+      when: ansible_os_family == "Debian"
+    
+    # Risky file permissions
+    - name: Create file with wide open permissions
+      file:
+        path: /tmp/test.txt
+        mode: "0777"
+        state: touch
+    
+    # Using deprecated with_ syntax
+    - name: Deprecated with_items
+      debug:
+        msg: "{{ item }}"
+      with_items:
+        - one
+        - two
