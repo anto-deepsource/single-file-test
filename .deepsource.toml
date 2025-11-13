@@ -1,0 +1,68 @@
+version = 1
+
+[[analyzers]]
+name = "terraform"
+
+[[analyzers]]
+name = "swift"
+
+[[analyzers]]
+name = "sql"
+
+[[analyzers]]
+name = "shell"
+
+[[analyzers]]
+name = "scala"
+
+[[analyzers]]
+name = "rust"
+
+  [analyzers.meta]
+  msrv = "stable"
+
+[[analyzers]]
+name = "ruby"
+
+[[analyzers]]
+name = "python"
+
+  [analyzers.meta]
+  runtime_version = "3.x.x"
+
+[[analyzers]]
+name = "php"
+
+[[analyzers]]
+name = "kotlin"
+
+  [analyzers.meta]
+  runtime_version = "1.8"
+  language_version = "1.7"
+
+[[analyzers]]
+name = "javascript"
+
+[[analyzers]]
+name = "java"
+
+  [analyzers.meta]
+  runtime_version = "11"
+
+[[analyzers]]
+name = "go"
+
+  [analyzers.meta]
+  import_root = "github.com/anto-deepsource/single-file-test"
+
+[[analyzers]]
+name = "docker"
+
+[[analyzers]]
+name = "cxx"
+
+[[analyzers]]
+name = "csharp"
+
+[[analyzers]]
+name = "ansible"
